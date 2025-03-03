@@ -53,6 +53,10 @@ function eliminarAlimento() {
     alert("La categoría especificada no existe.");
   }
 }
+// Función para guardar la lista en localStorage
+function guardarLista() {
+  localStorage.setItem("listaCompras", JSON.stringify(listaCompras));
+}
 
 // Evento para el botón de agregar
 document
