@@ -73,4 +73,3 @@ document
 
 // Mostrar la lista al cargar la página
 mostrarLista();
-
