@@ -1,4 +1,4 @@
-const listaDeCompras = {};
+const listaDeCompras = JSON.parse(localStorage.getItem("listaDeCompras")) || {};
 
 // Función para agregar un alimento a la lista
 function agregarAlimento() {
@@ -10,6 +10,7 @@ function agregarAlimento() {
   }
 
   listaDeCompras[categoria].push(alimento);
+  guardarLista();
   mostrarLista();
 }
 
@@ -45,6 +46,7 @@ function eliminarAlimento() {
       if (listaDeCompras[categoria].length === 0) {
         delete listaDeCompras[categoria];
       }
+      guardarLista();
       mostrarLista();
     } else {
       alert("El alimento no se encuentra en la categoría especificada.");
@@ -53,9 +55,10 @@ function eliminarAlimento() {
     alert("La categoría especificada no existe.");
   }
 }
+
 // Función para guardar la lista en localStorage
 function guardarLista() {
-  localStorage.setItem("listaCompras", JSON.stringify(listaCompras));
+  localStorage.setItem("listaDeCompras", JSON.stringify(listaDeCompras));
 }
 
 // Evento para el botón de agregar
@@ -67,3 +70,7 @@ document
 document
   .getElementById("eliminarBtn")
   .addEventListener("click", eliminarAlimento);
+
+// Mostrar la lista al cargar la página
+mostrarLista();
+
